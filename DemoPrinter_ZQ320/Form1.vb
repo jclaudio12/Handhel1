@@ -10,6 +10,8 @@ Imports ZSDK_API.Comm
 Imports ZSDK_API.ApiException
 Imports InTheHand.Net.Sockets
 Imports InTheHand.Net.Bluetooth
+Imports System.IO.Ports
+
 
 Public Class Form1
     Inherits System.Windows.Forms.Form
@@ -135,19 +137,21 @@ Public Class Form1
             ' Send the data to printer as a byte array.
             'thePrinterConn.Write(Encoding.[Default].GetBytes(cpclData))
             '-- Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 406 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "BOX 20 20 380 380 8" & vbCrLf & "T 0 6 137 177 TEST" & vbCrLf & "PRINT" & vbCrLf)
-            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 20 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "T 0 1 20 10 EPSA" & vbCrLf & "PRINT" & vbCrLf)
-            Dim cpclLabe2 As Byte() = Encoding.[Default].GetBytes("! 0 200 200 20 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "T 0 1 20 10 EPSA 2" & vbCrLf & "PRINT" & vbCrLf)
+            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 200 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 10 Ingenio El Pilar S.A." & vbCrLf & "T 5 0 1 55 Nota de Envio de Caña Tramero" & vbCrLf & "PRINT" & vbCrLf)
+            ' Dim cpclLabe2 As Byte() = Encoding.[Default].GetBytes("! 0 200 200 50 1" & vbCrLf & "PAG-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 90 Envios Caña Tramero" & vbCrLf & "PRINT" & vbCrLf)
             'Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 210 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "T 0 6 137 177 TEST" & vbCrLf & "PRINT" & vbCrLf)
 
             ''Dim cpclDataQR As [String] = "! 0 200 200 500 1" & vbCr & vbLf & "B QR 10 100 M 2 U 10 " & vbCr & vbLf & "MA,QR Code Prueba_EPSA" & vbCr & vbLf & "ENDQR" & vbCr & vbLf & "FORM" & vbCr & vbLf & "PRINT" & vbCr & vbLf
             'Dim cpclDataQR As [String] = "! 0 200 200 500 1" & vbCr & vbLf & "B QR 10 100 M 2 U 10 " & vbCr & vbLf & "MA,QR code EPSA123 " & vbCr & vbLf & "ENDQR" & vbCr & vbLf & "T 4 0 10 10 QR code EPSA123 " & vbCr & vbLf & "FORM" & vbCr & vbLf & "PRINT" & vbCr & vbLf
-            Dim cpclDataQR As [String] = "! 0 200 200 500 1" & vbCr & vbLf & "B QR 10 100 M 2 U 10 " & vbCr & vbLf & "MA,QR code EPSA123 " & vbCr & vbLf & "ENDQR" & vbCr & vbLf & "T 4 0 10 10 QR code EPSA123 " & vbCr & vbLf & "PRINT" & vbCr & vbLf
+            'Dim cpclDataQR As [String] = "! 0 200 200 500 1" & vbCr & vbLf & "B QR 10 100 M 2 U 10 " & vbCr & vbLf & "MA,QR code EPSA123 " & vbCr & vbLf & "ENDQR" & vbCr & vbLf & "T 4 0 10 10 QR code EPSA123 " & vbCr & vbLf & "PRINT" & vbCr & vbLf
+
+            ' prueba tamaño fuente
 
 
             thePrinterConn.Write(cpclLabel, 0, cpclLabel.Length)
-            thePrinterConn.Write(cpclLabe2, 0, cpclLabe2.Length)
+            'thePrinterConn.Write(cpclLabe2, 0, cpclLabe2.Length)
 
-            thePrinterConn.Write(Encoding.[Default].GetBytes(cpclDataQR))
+            'thePrinterConn.Write(Encoding.[Default].GetBytes(cpclDataQR))
             'Make sure the data got to the printer before closing the connection
             Thread.Sleep(500)
 
@@ -160,6 +164,9 @@ Public Class Form1
             ' Handle communications error here.
             Console.Write(e.StackTrace)
         End Try
-        
+
     End Sub
+    
+
+
 End Class
