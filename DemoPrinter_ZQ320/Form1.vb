@@ -137,7 +137,9 @@ Public Class Form1
             ' Send the data to printer as a byte array.
             'thePrinterConn.Write(Encoding.[Default].GetBytes(cpclData))
             '-- Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 406 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "BOX 20 20 380 380 8" & vbCrLf & "T 0 6 137 177 TEST" & vbCrLf & "PRINT" & vbCrLf)
-            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 200 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 10 Ingenio El Pilar S.A." & vbCrLf & "T 5 0 1 55 Nota de Envio de Caña Tramero" & vbCrLf & "PRINT" & vbCrLf)
+            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 300 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 10 INGENIO EL PILAR S.A." & vbCrLf & "T 5 0 1 55 NOTA ENVIO DE CAÑA TRAMERO" & vbCrLf & "LEFT" & vbCrLf & "T 5 0 1 80 NO. ENVIO: 000704" & vbCrLf & "T 5 0 300 80 SERIE:11AIT" & vbCrLf & "T 5 0 1 120 FECHA: 28/12/2018 00:13" & vbCrLf & "T 5 0 1 150 FINCA: 306 SANTA ISABEL SININA NO. 1" & vbCrLf & "T 5 0 1 180 CROQUIS: 00000000" & vbCrLf & "PRINT" & vbCrLf)
+
+
             ' Dim cpclLabe2 As Byte() = Encoding.[Default].GetBytes("! 0 200 200 50 1" & vbCrLf & "PAG-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 90 Envios Caña Tramero" & vbCrLf & "PRINT" & vbCrLf)
             'Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 210 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "T 0 6 137 177 TEST" & vbCrLf & "PRINT" & vbCrLf)
 
