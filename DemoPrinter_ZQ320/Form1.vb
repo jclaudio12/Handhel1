@@ -15,7 +15,7 @@ Imports System.IO.Ports
 
 Public Class Form1
     Inherits System.Windows.Forms.Form
-
+    Public enc As String
 
     Private Sub Test_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Test.Click
         Try
@@ -137,7 +137,27 @@ Public Class Form1
             ' Send the data to printer as a byte array.
             'thePrinterConn.Write(Encoding.[Default].GetBytes(cpclData))
             '-- Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 406 1" & vbCrLf & "ON-FEED IGNORE" & vbCrLf & "BOX 20 20 380 380 8" & vbCrLf & "T 0 6 137 177 TEST" & vbCrLf & "PRINT" & vbCrLf)
-            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 500 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 10 INGENIO EL PILAR S.A." & vbCrLf & "T 5 0 1 55 NOTA ENVIO DE CAÑA TRAMERO" & vbCrLf & "LEFT" & vbCrLf & "T 5 0 1 90 NO. ENVIO: 000704" & vbCrLf & "T 5 0 300 90 SERIE:11AIT" & vbCrLf & "T 5 0 1 120 FECHA: 28/12/2018 00:13" & vbCrLf & "T 5 0 1 150 FINCA: 306 SANTA ISABEL SININA NO. 1" & vbCrLf & "T 5 0 1 180 CROQUIS: 00000000" & vbCrLf & "T 5 0 1 210 ORDEN CORTE: 00001498" & vbCrLf & "T 5 0 1 240 TRANSPORTISTA: 0561" & vbCrLf & "T 5 0 1 270 PILOTO: 001" & vbCrLf & "T 5 0 1 300 VEHICULO: 017" & vbCrLf & "T 5 0 300 300 PLACAS: 960BBB" & vbCrLf & "T 5 0 1 330 STICKER: " & vbCrLf & "T 5 0 1 360 FRENTE: 302" & vbCrLf & "T 5 0 1 390 BOLETA DE TRANSPORTE: 0000000" & vbCrLf & "T 5 0 1 420 RUTA: 001" & vbCrLf & "T 5 0 1 450 CONTRATISTA: 0679" & vbCrLf & "T 5 0 1 480 HORA DE DESPACHO: 00:13" & vbCrLf & "T 5 0 1 510 CUADRILLA: 1" & vbCrLf & "PRINT" & vbCrLf)
+
+            ' Dim pag As String = """! 0 200 200 200 1"" & vbCrLf & ""PAGE-WIDTH 600 "" & vbCrLf & ""CENTER"" & vbCrLf & ""T 5 0 1 10 EL PILAR S.A."" & vbCrLf & ""PRINT"" & vbCrLf"
+            Dim star = "! 0 200 200 200 1"
+            Dim page = "PAGE-WIDTH 600"
+            Dim aling = "CENTER"
+            Dim print = "PRINT" & vbCrLf
+            Dim v = vbCrLf
+
+            Dim x = 2
+            If x = 1 Then
+                Dim empresa = "T 5 0 1 10 EL PILAR S.A."
+                enc = star & v & page & v & aling & v & empresa & v & print & v
+            Else
+                Dim empresa2 = "T 5 0 1 10 MONTE MARIA S.A."
+                enc = star & v & page & v & aling & v & empresa2 & v & print & v
+            End If
+            'Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 600 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 10 INGENIO EL PILAR S.A." & vbCrLf & "T 5 0 1 55 NOTA ENVIO DE CAÑA TRAMERO" & vbCrLf & "LEFT" & vbCrLf & "T 5 0 1 90 NO. ENVIO: 000704" & vbCrLf & "T 5 0 300 90 SERIE:11AIT" & vbCrLf & "T 5 0 1 120 FECHA: 28/12/2018 00:13" & vbCrLf & "T 5 0 1 150 FINCA: 306 SANTA ISABEL SININA NO. 1" & vbCrLf & "T 5 0 1 180 CROQUIS: 00000000" & vbCrLf & "T 5 0 1 210 ORDEN CORTE: 00001498" & vbCrLf & "T 5 0 1 240 TRANSPORTISTA: 0561" & vbCrLf & "T 5 0 1 270 PILOTO: 001" & vbCrLf & "T 5 0 1 300 VEHICULO: 017" & vbCrLf & "T 5 0 300 300 PLACAS: 960BBB" & vbCrLf & "T 5 0 1 330 STICKER: " & vbCrLf & "T 5 0 1 360 FRENTE: 302" & vbCrLf & "T 5 0 1 390 BOLETA DE TRANSPORTE: 0000000" & vbCrLf & "T 5 0 1 420 RUTA: 001" & vbCrLf & "T 5 0 1 450 CONTRATISTA: 0679" & vbCrLf & "T 5 0 1 480 HORA DE DESPACHO: 00:13" & vbCrLf & "T 5 0 1 510 CUADRILLA: 1" & vbCrLf & "PRINT" & vbCrLf)
+            'Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 200 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 5 0 1 10 EL PILAR S.A." & vbCrLf & "PRINT" & vbCrLf)
+            'Dim cpclLabel As Byte() = Encoding.[Default].GetBytes("! 0 200 200 200 1" & vbCrLf & "PAGE-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 5 0 1 10 EL PILAR S.A." & vbCrLf & "PRINT" & vbCrLf)
+
+            Dim cpclLabel As Byte() = Encoding.[Default].GetBytes(enc)
 
 
             ' Dim cpclLabe2 As Byte() = Encoding.[Default].GetBytes("! 0 200 200 50 1" & vbCrLf & "PAG-WIDTH 600" & vbCrLf & "CENTER" & vbCrLf & "T 4 0 1 90 Envios Caña Tramero" & vbCrLf & "PRINT" & vbCrLf)
@@ -168,7 +188,7 @@ Public Class Form1
         End Try
 
     End Sub
-    
+
 
 
 End Class
